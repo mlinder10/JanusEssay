@@ -1,6 +1,8 @@
 const leftPage = document.getElementById("page-left");
 const rightPage = document.getElementById("page-right");
 const pageBtn = document.getElementById("page-button");
+const cardsElements = document.querySelectorAll(".card");
+const cards = Array.from(cardsElements);
 
 const PAGES = {
   LEFT: 0,
@@ -44,7 +46,7 @@ function handlePageChange() {
   animateBtn();
 }
 
-document.addEventListener("mousemove", (e) => {
+function checkMousePos(e) {
   if (pageOpen === PAGES.LEFT) {
     if (e.screenX >= document.body.clientWidth * 0.9)
       pageBtn.classList.add("showing");
@@ -54,6 +56,19 @@ document.addEventListener("mousemove", (e) => {
       pageBtn.classList.add("showing");
     else pageBtn.classList.remove("showing");
   }
-});
+}
+
+function openCard(e) {
+  let afters = document.querySelectorAll(".card-after");
+  afters = Array.from(afters);
+  afters.forEach((a) => a.classList.remove("showing"));
+
+  if (e.target.classList.contains("card"))
+    e.target.querySelector(".card-after").classList.add("showing");
+}
+
+document.addEventListener("click", openCard);
+
+document.addEventListener("mousemove", checkMousePos);
 
 pageBtn.addEventListener("click", handlePageChange);
