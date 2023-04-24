@@ -8,7 +8,7 @@
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .page {
@@ -54,6 +54,14 @@ body {
 
 #page-button.animating {
   animation: btn-animation 1s;
+}
+
+.heading {
+  top: 60px;
+  font-size: 48px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  height: 20%;
+  position: absolute;
 }
 
 @keyframes btn-animation {
